@@ -36,3 +36,16 @@ SELECT
 FROM afisha.purchases p
 GROUP BY p.currency_code
 ORDER BY total DESC
+
+-- Самые популярные фильмы по возрастным ограничениям
+-- 16	78864
+-- 12	62861
+-- 0	61731
+-- 6	52403
+-- 18	36175
+SELECT 
+	age_limit,
+	count(*) AS total
+FROM afisha.purchases p
+GROUP BY p.age_limit 
+ORDER BY total DESC
