@@ -59,3 +59,35 @@ for params in params_list:
 
 # Выводим параметры и метрики лучшей модели после перебора всех вариантов
 print(f"\nЛучшие параметры: {best_params}, Validation MSE = {best_val_mse:.2f}, Validation R² = {best_val_r2:.2f}")
+
+
+## После выбора лучшей модели - объединим тренировочный и валидационный датасет  
+
+# Объединяем тренировочные и валидационные данные в одну выборку для финального обучения
+X_train_full = np.vstack([X_train, X_val])
+y_train_full = np.hstack([y_train, y_val])
+
+# Обучаем лучшую модель на полной тренировочной выборке
+best_model.fit(X_train_full, y_train_full)
+
+# Делаем предсказания на полной тренировочной выборке
+y_train_pred = best_model.predict(X_train_full)
+
+# Считаем метрики качества на тренировочных данных
+train_mse = mean_squared_error(y_train_full, y_train_pred)
+train_r2 = r2_score(y_train_full, y_train_pred)
+
+# Делаем предсказания на тестовой выборке
+y_test_pred = best_model.predict(X_test)
+
+# Считаем метрики качества на тестовых данных
+test_mse = mean_squared_error(y_test, y_test_pred)
+test_r2 = r2_score(y_test, y_test_pred)
+
+# Выводим результаты для обучающей выборки
+print(f"Train MSE лучшей модели: {train_mse:.2f}")
+print(f"Train R² лучшей модели: {train_r2:.2f}")
+
+# Выводим результаты для тестовой выборки
+print(f"\nTest MSE лучшей модели: {test_mse:.2f}")
+print(f"Test R² лучшей модели: {test_r2:.2f}")
