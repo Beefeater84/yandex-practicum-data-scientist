@@ -7,3 +7,7 @@ tags: #машинное-обучение
 
 
 ![[leakage-1.png]]
+
+## Links
+
+[yandex-practicum-data-scientist/sprint-13/notebooks/Normalization.ipynb at main · Beefeater84/yandex-practicum-data-scientist](https://github.com/Beefeater84/yandex-practicum-data-scientist/blob/main/sprint-13/notebooks/Normalization.ipynb)
