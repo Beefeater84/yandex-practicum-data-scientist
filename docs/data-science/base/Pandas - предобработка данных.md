@@ -18,6 +18,19 @@ for column in category_cols:
 
 ```
 
+```python
+def lowercase_categories(df, columns):
+    for col in columns:
+        # Проверяем, что столбец содержит строковые данные перед преобразованием
+        if df[col].dtype == 'object':
+            df[col] = df[col].str.lower()
+    return df
+
+# Применение:
+df = lowercase_categories(df, category_cols)
+
+```
+
 ## Вывод количественных данных
 
 - Мы анализируем выбросы.
